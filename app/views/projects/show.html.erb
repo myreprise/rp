@@ -1,0 +1,36 @@
+<div class="container">
+<h2><%= @project.name %></h2>
+	<div class="row">
+		<div class="col-md-10">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Project</th>
+						<th>City</th>
+						<th>District</th>
+						<th>Developer</th>
+						<th>Address</th>
+						<th>GFA</th>
+						<th>Parking</th>
+						<th>Tenants</th>
+						<th>Coordinates</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @project.name %></td>
+						<td><%= @project.city.name %></td>
+						<td><%= @project.district %></td>
+						<td><%= @project.developer.name %></td>
+						<td><%= @project.address %></td>
+						<td><%= @project.gfa %></td>
+						<td><%= @project.parking %></td>
+						<td><%= @project.tenants %></td>
+						<td><%= @project.lattitude %>, <%= @project.longitude %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>

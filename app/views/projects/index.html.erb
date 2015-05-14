@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+<h1>Listing Projects</h1>
+<%= link_to 'New Project', new_project_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th>Project</th>
+        <th>admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.name, project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div> <!-- end col-md -->
+    <div class="col-md-6"></div>
+  </div>
+</div> <!-- end container -->

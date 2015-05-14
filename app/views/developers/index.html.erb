@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+<h1>Listing Developers</h1>
+<%= link_to 'New Developer', new_developer_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+            <th>Developer</th>
+            <th>admin</th>    
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @developers.each do |developer| %>
+      <tr>
+        <td><%= link_to developer.name, developer %></td>
+        <td><%= link_to 'Edit', edit_developer_path(developer) %> | <%= link_to 'Destroy', developer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div> <!-- end col-md -->
+    <div class="col-md-6"></div>
+  </div>
+</div> <!-- end container -->
