@@ -1,5 +1,5 @@
 class DevelopersController < ApplicationController
-  before_action :set_developer, only: [:show, :edit, :update, :destroy]
+  #before_action :set_developer, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@developers = Developer.all
@@ -20,6 +20,8 @@ class DevelopersController < ApplicationController
 
 	def show
 		@developer = Developer.find(params[:id])
+		@projects = Project.where(developer_id: Developer.find(params[:id])).find_each
+		gon.projects = @projects
 	end
 
 	def edit

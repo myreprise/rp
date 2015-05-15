@@ -6,12 +6,14 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @projects = Project.where(city_id: City.find(params[:id])).find_each
+    @city = City.find(params[:id])
+
+    @projects = Project.where(city_id: @city).find_each
+
     gon.projects = @projects
-      respond_to do |format|
-        format.html 
-        format.json { render json: @projects }
-      end
+
+    @districts = District.where(city_id: @city).find_each
+
   end
 
   def new

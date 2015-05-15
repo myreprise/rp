@@ -1,36 +1,75 @@
 <div class="container">
 <h2><%= @project.name %></h2>
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-6">
+			<div class="project-photo"></div>
+			<div id="allmap"></div>
+		</div>
+		<div class="col-md-6">
 			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<td>City</td>
+						<td><%= link_to @project.city.name, @project.city %></td>
+					</tr>
+					<tr>
+						<td>District</td>
+						<td><%= link_to @project.district.name, @project.district %></td>
+					</tr>
+					<tr>
+						<td>Developer</td>
+						<td><%= link_to @project.developer.name, @project.developer %></td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><%= @project.address %></td>
+					</tr>
+					<tr>
+						<td>GFA</td>
+						<td><%= @project.gfa %></td>
+					</tr>
+					<tr>
+						<td>Parking</td>
+						<td><%= @project.parking %></td>
+					</tr>	
+					<tr>
+						<td>Tenants</td>
+						<td><%= @project.tenants %></td>
+					</tr>	
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h3>Other projects owned by <%= @project.developer.name %></h3>
+							<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>Project</th>
 						<th>City</th>
 						<th>District</th>
-						<th>Developer</th>
-						<th>Address</th>
-						<th>GFA</th>
-						<th>Parking</th>
-						<th>Tenants</th>
-						<th>Coordinates</th>
 					</tr>
 				</thead>
 				<tbody>
+					<%= @other_projects.each do |project| %>
 					<tr>
-						<td><%= @project.name %></td>
-						<td><%= @project.city.name %></td>
-						<td><%= @project.district %></td>
-						<td><%= @project.developer.name %></td>
-						<td><%= @project.address %></td>
-						<td><%= @project.gfa %></td>
-						<td><%= @project.parking %></td>
-						<td><%= @project.tenants %></td>
-						<td><%= @project.lattitude %>, <%= @project.longitude %></td>
+						<td><%= link_to project.name, project %></td>
+						<td><%= link_to project.city.name, project.city %></td>
+						<td><%= link_to project.district, project.district %></td>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
+			</div>
+			<div class="col-md-6"></div>
 		</div>
-		<div class="col-md-2"></div>
 	</div>
 </div>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808"></script>
+
+<script type="text/javascript">
+	createMap(<%= @project.longitude %>, <%= @project.lattitude %>, 13, gon.project);
+</script>

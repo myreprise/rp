@@ -34,6 +34,16 @@
     <%= f.label :lattitude %>
     <%= f.text_field :lattitude %>
   </div>
+  <div>
+    <h2>Districts</h2>
+  </div>
+  <div>
+    <ul>
+      <%= @districts.each do |district| %>
+        <li><% district.name %></li>
+      <% end %>
+    </ul>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

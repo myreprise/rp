@@ -1,1 +1,46 @@
-<h2><%= @developer.name %></h2>
+<div class="container">
+ <h2><%= @developer.name %></h2>
+	<div class="row">
+		<div class="col-md-8">
+			<h3>Projects by developer</h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Project</th>
+						<th>City</th>
+						<th>District</th>
+						<th>Address</th>
+						<th>GFA</th>
+						<th>Tenants</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @projects.each do |project| %>
+					<tr>
+						<td><%= link_to project.name, project %></td>
+						<td><%= link_to project.city.name, project.city %></td>
+						<td><%= project.district %></td>
+						<td><%= project.address %></td>
+						<td><%= project.gfa %></td>
+						<td><%= project.tenants %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-4">
+			<div id="allmap"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10">
+			<h3><%= @developer.name %> news headlines</h3>
+		</div>
+	</div>
+</div>
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808"></script>
+
+    <script type="text/javascript">
+    	createMap(108.913426, 34.153009, 5, gon.projects);
+    </script>

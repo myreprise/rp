@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
+		gon.project = @project
+		@other_projects = Project.where(developer_id: @project.developer_id).find_each
 	end
 
 	def new
