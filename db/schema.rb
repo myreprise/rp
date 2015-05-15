@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514105822) do
+ActiveRecord::Schema.define(version: 20150515035408) do
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.date     "publication_date"
+    t.string   "publication"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -42,11 +51,19 @@ ActiveRecord::Schema.define(version: 20150514105822) do
     t.datetime "updated_at",                null: false
     t.integer  "developer_id"
     t.float    "turnover"
-    t.integer  "address"
     t.integer  "city_id"
     t.boolean  "existing"
     t.integer  "parking"
     t.text     "tenants",      default: ""
+    t.string   "address",      default: ""
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

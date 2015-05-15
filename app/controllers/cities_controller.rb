@@ -7,6 +7,7 @@ class CitiesController < ApplicationController
 
   def show
     @projects = Project.where(city_id: City.find(params[:id])).find_each
+    gon.projects = @projects
       respond_to do |format|
         format.html 
         format.json { render json: @projects }

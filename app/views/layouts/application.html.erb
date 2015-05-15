@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Maps</title>
+  <%= include_gon %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,6 +25,7 @@
         <li><%= link_to 'Cities', cities_path(@cities) %></li>
         <li><%= link_to 'Projects', projects_path(@projects) %></li>
         <li><%= link_to 'Developers', developers_path(@developers) %></li>
+        <li><%= link_to 'News', articles_path(@articles) %></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
