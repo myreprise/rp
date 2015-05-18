@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515102038) do
+ActiveRecord::Schema.define(version: 20150518092410) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -27,18 +27,20 @@ ActiveRecord::Schema.define(version: 20150515102038) do
     t.string   "tier"
     t.float    "area"
     t.string   "rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.float    "longitude"
     t.float    "lattitude"
+    t.string   "image_tag",  default: ""
   end
 
   create_table "developers", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
     t.boolean  "listed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "image_tag",  default: ""
   end
 
   create_table "districts", force: :cascade do |t|
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150515102038) do
     t.text     "tenants",      default: ""
     t.string   "address",      default: ""
     t.integer  "district_id"
+    t.string   "image_tag",    default: ""
   end
 
   create_table "re_metrics", force: :cascade do |t|

@@ -15,14 +15,11 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap-sass'
-
 gem 'd3-rails'
-
 gem 'gon'
-
 gem 'paper_trail'
-
 gem 'wheelhouse'
+gem 'paperclip'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

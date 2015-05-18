@@ -23,7 +23,7 @@ class DevelopersController < ApplicationController
 		@projects = Project.where(developer_id: Developer.find(params[:id])).find_each
 		gon.projects = @projects
 	#	@articles = Article.where("title LIKE ? ", "%#{params[:developer]}%") 
-		@articles = Article.where("title LIKE ?", @developer.name "%#{}%") 
+		@articles = Article.where("title LIKE ?", @developer.name) 
 
 	end
 
