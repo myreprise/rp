@@ -2,6 +2,12 @@
 	<div class="row">
 		<div class="md-col-12">
 			<h1>Listing all articles</h1>
+			<% @articles.each do |article| %>
+				<div class = "article">
+					<h1 class="article-title"><%= link_to article.title, article %></h1>
+					<p class="article-content"><%= simple_format article.content %></p>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

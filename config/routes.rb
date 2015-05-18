@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :developers
   resources :articles
 
-  get 'districts/:id' => 'districts#show'
+  get 'cities/districts/:id' => 'districts#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
