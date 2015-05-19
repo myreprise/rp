@@ -1,4 +1,5 @@
 <%= form_for(@project) do |f| %>
+
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this city from being saved:</h2>
@@ -10,47 +11,48 @@
       </ul>
     </div>
   <% end %>
-  <div>
+
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-    <div>
+  <div class="field">
     <%= f.label :city_id %>
     <%= f.collection_select(:city_id, City.all, :id, :name, prompt: true) %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :district %>
-    <%= f.collection_select(:district_id, District.where(city_id: :city_id), :id, :name, prompt: true) %>
+    <%= f.collection_select(:district_id, District.where(city_id: @project.city_id), :id, :name, prompt: true) %>
   </div>
-    <div>
+  <div class="field">
     <%= f.label :developer_id %>
     <%= f.collection_select(:developer_id, Developer.all, :id, :name, prompt: true) %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :turnover %>
     <%= f.text_field :turnover %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :address %>
     <%= f.text_field :address %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :gfa %>
     <%= f.text_field :gfa %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :parking %>
     <%= f.text_field :parking %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :tenants %>
     <%= f.text_area :tenants %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :longitude %>
     <%= f.text_field :longitude %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :lattitude %>
     <%= f.text_field :lattitude %>
   </div>

@@ -7,8 +7,9 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
+		@city = City.where(city_id: @project.city_id)
 		gon.project = @project
-		@other_projects = Project.where(developer_id: @project.developer_id).find_each
+		@other_projects = Project.where(district_id: @project.district_id).find_each
 	end
 
 	def new
@@ -48,7 +49,7 @@ class ProjectsController < ApplicationController
 
 private
   def project_params
-    params.require(:project).permit(:name, :city_id, :developer_id, :address, :turnover, :parking, :tenants, :district, :gfa, :longitude, :lattitude)
+    params.require(:project).permit(:name, :city_id, :developer_id, :address, :turnover, :parking, :tenants, :district_id, :gfa, :longitude, :lattitude)
   end
   
 end

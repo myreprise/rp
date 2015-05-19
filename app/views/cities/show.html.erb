@@ -1,11 +1,10 @@
 <div class="container">
 	<div class="row">
-	  <div class="col-xs-12">
+	  <div class="col-md-12">
 	    <h2><%= @city.name %><p>
 	    <%= link_to 'Edit', edit_city_path(@city) %> |
 		<%= link_to 'Back', cities_path %></p>
 	</h2>
-
 	  </div>
 	</div>
 	<div class="row">
@@ -24,13 +23,17 @@
 					<tr>
 						<td><%= link_to project.name, project %></td>
 						<td><%= link_to project.developer.name, project.developer %></td>
-						<td></td>
+						<td><%= link_to project.district.name, city_district_path(@city, project.district) %></td>
+
+
+
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
 
 							<h3>Retail districts</h3>
+							<p><%= link_to pluralize(@city.districts.size, 'districts'), city_districts_path(@city) %></p>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -42,7 +45,7 @@
 						<tbody>
 							<% @districts.each do |district| %>
 							<tr>
-								<td><%= district.name %></td>
+								<td><%= link_to district.name, [district.city, district] %></td>
 								<td><%= district.population %></td>
 								<td><%= district.grade %></td>
 							</tr>

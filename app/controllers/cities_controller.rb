@@ -7,12 +7,9 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
-
-    @projects = Project.where(city_id: @city).find_each
-
+    @projects = Project.where(city_id: @city.id).find_each
     gon.projects = @projects
-
-    @districts = District.where(city_id: @city).find_each
+    @districts = @city.districts
 
   end
 
@@ -33,8 +30,6 @@ class CitiesController < ApplicationController
       end
   end
 
-  # PATCH/PUT /cities/1
-  # PATCH/PUT /cities/1.json
   def update
     @city = City.find(params[:id])
     if @city.update_attributes(city_params)
@@ -51,8 +46,6 @@ class CitiesController < ApplicationController
 
   end
 
-  # DELETE /cities/1
-  # DELETE /cities/1.json
   def destroy
     @city.destroy
     respond_to do |format|
@@ -62,12 +55,10 @@ class CitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_city
       @city = City.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
       params.require(:city).permit(:name, :tier, :area, :rank, :longitude, :lattitude)
     end

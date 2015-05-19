@@ -17,7 +17,7 @@
 					<tr>
 						<td><%= link_to project.name, project %></td>
 						<td><%= link_to project.city.name, project.city %></td>
-						<td><%= project.gfa %></td>
+						<td><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
 						<td><%= project.tenants %></td>
 					</tr>
 					<% end %>

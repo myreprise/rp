@@ -1,11 +1,13 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
   
-  resources :cities
+  resources :cities do
+    resources :districts
+  end
+  
   resources :projects
   resources :developers
+  
   resources :articles
-
-  get 'cities/districts/:id' => 'districts#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

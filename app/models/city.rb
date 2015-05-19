@@ -5,5 +5,6 @@ class City < ActiveRecord::Base
 	has_many :districts, :dependent => :destroy
 
 	validates_presence_of :name
-
+	validates :name, length: { minimum: 2 }
+	
 end

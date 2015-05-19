@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+<h1>Listing <%= @city.name %> Districts</h1>
+<%= link_to 'New District', new_city_district_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+            <th>District</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @districts.each do |district| %>
+      <tr>
+        <td><%= link_to district.name, city_district_path(@city, district) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div> <!-- end col-md -->
+    
+    <div class="col-md-6">
+    </div> <!-- end col-md -->
+  </div>
+</div> <!-- end container -->

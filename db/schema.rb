@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518092410) do
+ActiveRecord::Schema.define(version: 20150519062327) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -68,25 +68,6 @@ ActiveRecord::Schema.define(version: 20150518092410) do
     t.string   "address",      default: ""
     t.integer  "district_id"
     t.string   "image_tag",    default: ""
-  end
-
-  create_table "re_metrics", force: :cascade do |t|
-    t.integer  "city_id"
-    t.date     "month"
-    t.float    "new_constructed_residential"
-    t.float    "secondary_residential"
-    t.float    "re_invest_residential"
-    t.float    "re_invest_commercial"
-    t.float    "floor_space_started_residential"
-    t.float    "floor_space_started_commercial"
-    t.float    "floor_space_construction_residential"
-    t.float    "floor_space_construction_commercial"
-    t.float    "floor_space_sold_residential"
-    t.float    "floor_space_sold_commercial"
-    t.float    "building_sold_residential"
-    t.float    "buidling_sold_commercial"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,12 +7,10 @@ class Article < ActiveRecord::Base
 	belongs_to :city
 	belongs_to :projects
 
-
 	def self.search(query)
 		where("title like ?", "%#{query}%")
 	end
 
 	scope :features, -> (name) { where("title like ?", "#{name}%")}
-
 
 end
