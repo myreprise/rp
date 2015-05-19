@@ -2,6 +2,7 @@
   
   resources :cities do
     resources :districts
+    resources :re_data
   end
   
   resources :projects

@@ -32,7 +32,7 @@
 				</tbody>
 			</table>
 
-							<h3>Retail districts</h3>
+				<h3>Retail districts</h3>
 							<p><%= link_to pluralize(@city.districts.size, 'districts'), city_districts_path(@city) %></p>
 					<table class="table table-hover">
 						<thead>
@@ -48,6 +48,28 @@
 								<td><%= link_to district.name, [district.city, district] %></td>
 								<td><%= district.population %></td>
 								<td><%= district.grade %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+				<h3>Most recent real estate data</h3>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>New Constructed Residential</th>
+								<th>Secondary Residential</th>
+								<th>Real Estate Investment (Commercial)</th>
+								<th>Real Estate Investment (Residential)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @re_data.each do |data| %>
+							<tr>
+								<td><%= link_to data.new_constructed_residential %></td>
+								<td><%= link_to data.secondary_residential %></td>
+								<td><%= link_to data.re_investment_commercial %></td>
+								<td><%= link_to data.re_investment_commercial %></td>
 							</tr>
 							<% end %>
 						</tbody>
