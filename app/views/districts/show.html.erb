@@ -1,6 +1,22 @@
 <div class="container">
  <h2><%= @district.name %></h2>
 	<div class="row">
-
+		<h2>The following projects are:</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Project</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%= @projects.each do |project| %>
+				<tr>
+					<td>
+						<%= project.name %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
 </div>
