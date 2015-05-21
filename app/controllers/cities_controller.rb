@@ -5,6 +5,14 @@ class CitiesController < ApplicationController
     @cities = City.all
   end
 
+  def data
+    respond_to do |format|
+      format.json {
+        render :json => [1,2,3,4,5]
+      }
+    end
+  end
+
   def show
     @city = City.find(params[:id])
     @projects = Project.where(city_id: @city.id).find_each

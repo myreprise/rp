@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519092811) do
+ActiveRecord::Schema.define(version: 20150520121300) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20150519092811) do
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "paperclip_images", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "projects", force: :cascade do |t|

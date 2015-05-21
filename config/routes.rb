@@ -1,5 +1,6 @@
   Rails.application.routes.draw do
   
+  resources :paperclip_images
   resources :cities do
     resources :districts
     resources :re_data
@@ -9,6 +10,8 @@
   resources :developers
   
   resources :articles
+
+  get 'cities/data', :defaults => { :format => 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
