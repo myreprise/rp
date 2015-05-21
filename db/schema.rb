@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520121300) do
+ActiveRecord::Schema.define(version: 20150521091038) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -27,20 +27,26 @@ ActiveRecord::Schema.define(version: 20150520121300) do
     t.string   "tier"
     t.float    "area"
     t.string   "rank"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.float    "longitude"
     t.float    "lattitude"
-    t.string   "image_tag",  default: ""
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "developers", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
     t.boolean  "listed"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "image_tag",  default: ""
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "districts", force: :cascade do |t|
@@ -66,17 +72,20 @@ ActiveRecord::Schema.define(version: 20150520121300) do
     t.integer  "gfa"
     t.float    "longitude"
     t.float    "lattitude"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "developer_id"
     t.float    "turnover"
     t.integer  "city_id"
     t.boolean  "existing"
     t.integer  "parking"
-    t.text     "tenants",      default: ""
-    t.string   "address",      default: ""
+    t.text     "tenants",            default: ""
+    t.string   "address",            default: ""
     t.integer  "district_id"
-    t.string   "image_tag",    default: ""
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "realestate", force: :cascade do |t|
@@ -104,8 +113,12 @@ ActiveRecord::Schema.define(version: 20150520121300) do
     t.string   "name"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

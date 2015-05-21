@@ -12,7 +12,7 @@
 				<%= @projects.each do |project| %>
 				<tr>
 					<td>
-						<%= project.name %>
+						<%= link_to project.name, project %>
 					</td>
 				</tr>
 				<% end %>

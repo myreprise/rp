@@ -23,10 +23,12 @@ class CitiesController < ApplicationController
 
   def new
     @city = City.new
+    @districts = @city.districts
   end
 
   def edit
     @city = City.find(params[:id])
+    @districts = @city.districts
   end
 
   def create
@@ -68,6 +70,6 @@ class CitiesController < ApplicationController
     end
 
     def city_params
-      params.require(:city).permit(:name, :tier, :area, :rank, :longitude, :lattitude)
+      params.require(:city).permit(:name, :tier, :area, :rank, :longitude, :lattitude, :image)
     end
 end

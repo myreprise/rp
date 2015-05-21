@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= form_for @project, html: { multipart: true } do |f| %>
 
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -55,6 +55,10 @@
   <div class="field">
     <%= f.label :lattitude %>
     <%= f.text_field :lattitude %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, html: { class: 'form-control'} %>
   </div>
   <div class="actions">
     <%= f.submit %>

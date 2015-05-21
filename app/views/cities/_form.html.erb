@@ -1,4 +1,4 @@
-<%= form_for(@city) do |f| %>
+<%= form_for @city, html: { multipart: true, role: "form" } do |f| %>
   <% if @city.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@city.errors.count, "error") %> prohibited this city from being saved:</h2>
@@ -10,41 +10,43 @@
       </ul>
     </div>
   <% end %>
-  <div>
+  <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :tier %>
-    <%= f.text_field :tier %>
+    <%= f.text_field :tier, class: 'form-control' %>
   </div>
-  <div>
-    <%= f.label :area %>
-    <%= f.text_field :area %>
+  <div class="field">
+    <%= f.label :area  %>
+    <%= f.text_field :area, class: 'form-control' %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :rank %>
-    <%= f.text_field :rank %>
+    <%= f.text_field :rank, class: 'form-control' %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
+    <%= f.text_field :longitude, class: 'form-control' %>
   </div>
-  <div>
+  <div class="field">
     <%= f.label :lattitude %>
-    <%= f.text_field :lattitude %>
+    <%= f.text_field :lattitude, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, html: { class: 'form-control'} %>
   </div>
   <div>
-    <h2>Districts</h2>
-  </div>
-  <div>
+    <h4>Districts</h4>
     <ul>
-      <%= @districts.each do |district| %>
-        <li><% district.name %></li>
+      <% @districts.each do |district| %>
+        <li><%= district.name %></li>
       <% end %>
     </ul>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

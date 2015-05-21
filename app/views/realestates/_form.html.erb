@@ -1,0 +1,41 @@
+<%= form_for(@redatum) do |f| %>
+  <% if @redatum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@redatum.errors.count, "error") %> prohibited this developer from being saved:</h2>
+
+      <ul>
+      <% @redatum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month %>
+    <%= f.select_month :period %>
+  </div>
+  <div class="field">
+    <%= f.label :year %>
+    <%= f.select_year :period %>
+  </div>
+  <div class="field">
+    <%= f.label :new_constructed_residential %>
+    <%= f.text_field :new_constructed_residential %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_residential %>
+    <%= f.text_field :secondary_residential %>
+  </div>
+  <div class="field">
+    <%= f.label :re_investment_commerical %>
+    <%= f.text_field :re_investment_commerical %>
+  </div>
+  <div class="field">
+    <%= f.label :re_investment_residential %>
+    <%= f.text_field :re_investment_residential %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
