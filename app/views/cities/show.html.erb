@@ -6,8 +6,11 @@
 		<%= link_to 'Back', cities_path %></p>
 	</h2>
 	  </div>
-	</div>
+	</div> <!-- End of row -->
 	<div class="row">
+		<div class="col-md-5">
+			<%= image_tag(@city.image.url(:large), :class => "img-thumbnail") %>
+		</div>
 		<div class="col-md-7">
 			<h3>Retail projects</h3>
 			<table class="table table-hover">
@@ -34,12 +37,14 @@
 
 
 		</div>
-		<div class="col-md-5">
-			<%= image_tag(@city.image.url(:large), :class => "img-thumbnail") %>
-		</div>
 	</div> <!-- end row div -->
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-md-12">
+			<div id="allmap"></div>
+		</div>
+	</div> <!-- End of row -->
+	<div class="row">
+		<div class="col-md-12">
 				<h3>Retail districts</h3>
 							<p><%= link_to pluralize(@city.districts.size, 'districts'), city_districts_path(@city) %></p>
 					<table class="table table-hover">
@@ -77,9 +82,6 @@
 							</tr>
 						</tbody>
 					</table>
-		</div>
-		<div class="col-md-5">
-			<div id="allmap"></div>
 		</div>
 	</div> <!-- End of row -->
 </div> <!-- End of container -->

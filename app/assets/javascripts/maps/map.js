@@ -7,7 +7,7 @@ function createMap(longitude, lattitude, zoom, gon_query){
 	map = new BMap.Map("allmap"); 
 	map.centerAndZoom(new BMap.Point(longitude, lattitude), zoom);
 	map.addControl(new BMap.MapTypeControl());
-	map.enableScrollWheelZoom();
+	//map.enableScrollWheelZoom();
 	map.enableContinuousZoom();
 	map.addControl(new BMap.NavigationControl());
 //	map.setMapStyle({styleJson: mapStyle});

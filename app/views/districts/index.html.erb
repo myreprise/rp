@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
 
 <h1>Listing <%= @city.name %> Districts</h1>
 <%= link_to 'New District', new_city_district_path %>
@@ -22,8 +22,19 @@
 </table>
 
     </div> <!-- end col-md -->
-    
-    <div class="col-md-6">
-    </div> <!-- end col-md -->
-  </div>
+  </div> <!-- end row -->
+    <div class="row">
+      <div class="col-md-12">
+      
+        <div id="allmap"></div>
+      
+      </div> <!-- end col-md -->
+
+    </div>
 </div> <!-- end container -->
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808"></script>
+
+    <script type="text/javascript">
+      createMap(<%= @city.longitude %>, <%= @city.lattitude %>, 11, gon.projects);
+    </script>

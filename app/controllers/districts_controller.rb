@@ -4,6 +4,8 @@ class DistrictsController < ApplicationController
 	def index
 		city = City.find(params[:city_id])
 		@districts = city.districts
+	    @projects = Project.where(city_id: @city.id).find_each
+	    gon.projects = @projects
 	end
 
 	def show
