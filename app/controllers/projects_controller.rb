@@ -7,9 +7,9 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		@city = City.where(city_id: @project.city_id)
 		gon.project = @project
 		@other_projects = Project.where(district_id: @project.district_id).find_each
+		@developer_projects = Project.where(developer_id: @project.developer_id).find_each
 	end
 
 	def new

@@ -30,7 +30,7 @@ function createMap(longitude, lattitude, zoom, gon_query){
 		}); //end of .each()
 	} else {
 		marker = new BMap.Marker(new BMap.Point(gon_query.longitude, gon_query.lattitude));
-		content = "<h4>" + gon_query.name + "</h4><p class='projectInfo'>" + "EXISTING/FUTURE project (" + gon_query.year + ")" + "</p><p class='projectInfo'>" + gon_query.grade + " " + gon_query.type + "</p><p class='last'>" + addCommas(gon_query.gfa) + " sq m" + "</p>";
+		content = "<h4>" + gon_query.name + "</h4><p class='projectInfo'>" + "EXISTING/FUTURE project (" + gon_query.year + ")" + "</p><p class='projectInfo'>" + gon_query.grade + " " + gon_query.type + "</p><p class='last'></p>";
 		addClickHandler(content, marker);
 		map.addOverlay(marker);	
 	}
@@ -53,20 +53,6 @@ function addClickHandler(content, marker) {
 
 
 
-
-function addCommas(nStr) {
-    nStr += '';
-    x = nStr.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    }
-    return x1 + x2;
-} //end the addCommas function
-
-
 function distance(taubman, other){
 	var RADIUS = 6371000;
 	var latRad1 = taubman[1] * Math.PI/180;
@@ -76,7 +62,7 @@ function distance(taubman, other){
 
 	var a = Math.sin(deltaLat/2)*Math.sin(deltaLat/2) + Math.cos(latRad1)*Math.cos(latRad2)*Math.sin(deltaLon/2)*Math.sin(deltaLon/2);
 	var c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-	return (RADIUS * c)/1000;
+	return ((RADIUS * c)/1000).toFixed(2);
 } //end of distance function
 
 

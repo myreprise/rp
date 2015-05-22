@@ -12,4 +12,5 @@ class City < ActiveRecord::Base
 	validates_presence_of :name
 	validates :name, length: { minimum: 2 }
 	
+
 end

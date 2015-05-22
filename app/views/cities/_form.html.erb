@@ -40,11 +40,19 @@
     <%= f.file_field :image, html: { class: 'form-control'} %>
   </div>
   <div>
-    <h4>Districts</h4>
+    <h4><%= @districts.size %> Districts</h4>
+    <table>
+      <thead>
+      </thead>
+      <tbody>
+        <% @districts.each do |district| %>
+        <tr>
+          <td><%= link_to district.name, edit_city_district_path(@city, district) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
     <ul>
-      <% @districts.each do |district| %>
-        <li><%= district.name %></li>
-      <% end %>
     </ul>
   </div>
   <div class="actions">
