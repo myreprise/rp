@@ -3,7 +3,7 @@
   resources :paperclip_images
   resources :cities do
     resources :districts
-    resources :realestates
+    resources :estates
   end
   
   resources :projects

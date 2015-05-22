@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+<h1>Listing <%= @city.name %> real estate data</h1>
+<%= link_to city.redatum, redatum %>
+<%= link_to 'Edit', edit_city_redatum_path(city) %> | <%= link_to 'Destroy', redatum, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+            <th>New constructed residential</th>
+            <th>Secondary residential</th>
+            <th>Real estate investment residential</th>
+            <th>Real estate investment commercial</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+</table>
+
+    </div> <!-- end col-md -->
+  </div>
+</div> <!-- end container -->

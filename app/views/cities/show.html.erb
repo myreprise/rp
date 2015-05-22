@@ -1,11 +1,19 @@
 <div class="container">
 	<div class="row">
-	  <div class="col-md-12">
+	  <div class="col-md-8">
 	    <h2><%= @city.name %><p>
 	    <%= link_to 'Edit', edit_city_path(@city) %> |
 		<%= link_to 'Back', cities_path %></p>
 	</h2>
 	  </div>
+	      <div class="col-md-4">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="search <%= @city.name %> projects">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div> <!-- end col md -->
 	</div> <!-- End of row -->
 	<div class="row">
 		<div class="col-md-5">
@@ -70,6 +78,7 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>Period</th>
 								<th>New Constructed Residential</th>
 								<th>Secondary Residential</th>
 								<th>Real Estate Investment (Commercial)</th>
@@ -77,9 +86,16 @@
 							</tr>
 						</thead>
 						<tbody>
+							<% @estates.each do |estate| %>
 							<tr>
+								<td><%= estate.timeperiod.strftime("%Y %B") %></td>
+								<td><%= estate.new_constructed_residential %></td>
+								<td><%= estate.secondary_residential %></td>
+								<td><%= estate.re_investment_residential %></td>
 
+								<td><%= estate.re_investment_commercial %></td>
 							</tr>
+							<% end %>
 						</tbody>
 					</table>
 		</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521091038) do
+ActiveRecord::Schema.define(version: 20150522022341) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150521091038) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "estate_id"
   end
 
   create_table "developers", force: :cascade do |t|
@@ -56,6 +57,27 @@ ActiveRecord::Schema.define(version: 20150521091038) do
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "estates", force: :cascade do |t|
+    t.integer  "city_id"
+    t.date     "timeperiod"
+    t.integer  "building_sold_residential"
+    t.integer  "building_sold_commercial"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.float    "new_constructed_residential"
+    t.float    "secondary_residential"
+    t.float    "re_investment_residential"
+    t.float    "re_investment_commercial"
+    t.float    "floor_space_started_residential"
+    t.float    "floor_space_started_commercial"
+    t.float    "floor_space_under_construction_residential"
+    t.float    "floor_space_under_construction_commercial"
+    t.float    "floor_space_completed_residential"
+    t.float    "floor_space_completed_commercial"
+    t.float    "floor_space_sold_residential"
+    t.float    "floor_space_sold_commercial"
   end
 
   create_table "paperclip_images", force: :cascade do |t|
@@ -86,27 +108,6 @@ ActiveRecord::Schema.define(version: 20150521091038) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-  end
-
-  create_table "realestate", force: :cascade do |t|
-    t.integer  "city_id"
-    t.date     "timeperiod"
-    t.integer  "new_constructed_residential"
-    t.integer  "secondary_residential"
-    t.integer  "re_investment_residential"
-    t.integer  "re_investment_commercial"
-    t.integer  "floor_space_started_residential"
-    t.integer  "floor_space_started_commercial"
-    t.integer  "floor_space_under_construction_residential"
-    t.integer  "floor_space_under_construction_commercial"
-    t.integer  "floor_space_completed_residential"
-    t.integer  "floor_space_completed_commercial"
-    t.integer  "floor_space_sold_residential"
-    t.integer  "floor_space_sold_commercial"
-    t.integer  "building_sold_residential"
-    t.integer  "building_sold_commercial"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
   end
 
   create_table "users", force: :cascade do |t|

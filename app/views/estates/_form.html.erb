@@ -1,0 +1,89 @@
+<%= form_for([@city, @estate]) do |f| %>
+  <% if @estate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estate.errors.count, "error") %> prohibited this developer from being saved:</h2>
+
+      <ul>
+      <% @estate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Period" %>
+    <%= f.date_select :timeperiod, :order => [:month, :year], class: 'form-control' %>
+  </div>
+  <br />
+  <h4>Residential price indices</h4>
+  <div class="field">
+    <%= f.label :new_constructed_residential %>
+    <%= f.text_field :new_constructed_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_residential %>
+    <%= f.text_field :secondary_residential, class: 'form-control' %>
+  </div>
+  <br/>
+  <h4>Real estate investment</h4>
+  <div class="field">
+    <%= f.label "Residential real estate investment" %>
+    <%= f.text_field :re_investment_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label "Commercial real estate investment" %>
+    <%= f.text_field :re_investment_commercial, class: 'form-control' %>
+  </div>
+  <br />
+  <h4>Floor space data</h4>
+  <p>Floor space started</p>
+  <div class="field">
+    <%= f.label "Residential" %>
+    <%= f.text_field :floor_space_started_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label "Commercial" %>
+    <%= f.text_field :floor_space_started_commercial, class: 'form-control' %>
+  </div>
+  <p>Floor space under construction</p>
+  <div class="field">
+    <%= f.label "Residential" %>
+    <%= f.text_field :floor_space_under_construction_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label "Commercial" %>
+    <%= f.text_field :floor_space_under_construction_commercial, class: 'form-control' %>
+  </div>
+  <p>Floor space completed</p>
+  <div class="field">
+    <%= f.label "Residential" %>
+    <%= f.text_field :floor_space_completed_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label "Commercial" %>
+    <%= f.text_field :floor_space_completed_commercial, class: 'form-control' %>
+  </div>
+  <p>Floor space sold</p>
+  <div class="field">
+    <%= f.label "Residential" %>
+    <%= f.text_field :floor_space_sold_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label "Commercial" %>
+    <%= f.text_field :floor_space_sold_commercial, class: 'form-control' %>
+  </div>
+  <br />
+  <h4>Building sold</h4>
+  <div class="field">
+    <%= f.label "Residential" %>
+    <%= f.text_field :building_sold_residential, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label "Commercial" %>
+    <%= f.text_field :building_sold_commercial, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

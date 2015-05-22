@@ -22,9 +22,7 @@ class DevelopersController < ApplicationController
 		@developer = Developer.find(params[:id])
 		@projects = Project.where(developer_id: Developer.find(params[:id])).find_each
 		gon.projects = @projects
-	#	@articles = Article.where("title LIKE ? ", "%#{params[:developer]}%") 
 		@articles = Article.where("title LIKE ?", "%#{@developer.name}%")
-		#@articles = Article.all
 	end
 
 	def edit
@@ -40,7 +38,7 @@ class DevelopersController < ApplicationController
 		end
 	end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+private
     def developer_params
       params.require(:developer).permit(:name, :country, :listed, :image)
     end

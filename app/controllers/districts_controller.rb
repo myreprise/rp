@@ -39,7 +39,7 @@ class DistrictsController < ApplicationController
 		city = City.find(params[:city_id])
 		@district = city.districts.find(params[:id])
 
-		if @district.update_attributes(params[:district])
+		if @district.update_attributes(district_params])
 			redirect_to(:action => 'show', :id => @district.id)
 		else
 			render('index')

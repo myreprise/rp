@@ -18,6 +18,7 @@ class CitiesController < ApplicationController
     @projects = Project.where(city_id: @city.id).find_each
     gon.projects = @projects
     @districts = @city.districts
+    @estates = Estate.where(city_id: @city.id).find_each
 
   end
 
