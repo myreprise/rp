@@ -99,11 +99,42 @@
 					</table>
 		</div>
 	</div> <!-- End of row -->
+
+	<div class="row">
+		<div class="col-md-12">
+
+		</div>
+	</div> <!-- End of row -->
+
 </div> <!-- End of container -->
 
 
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808"></script>
+<script type="text/javascript">
 
-    <script type="text/javascript">
-    	createMap(<%= @city.longitude %>, <%= @city.lattitude %>, 11, gon.projects);
-    </script>
+
+
+function addMarker(lat, long) {
+    _lat = lat;
+    _long = long;
+    $.ajax({
+                    url: '/cities.json',
+                    dataType: "json",
+                    success: function(data){
+                    	console.log(data)
+                    },
+
+/*
+                    function (data) {
+                        new BMap.Marker({
+                            map: map,
+                            position: new google.maps.LatLng(_lat, _long),
+                        }); //End Marker
+                    }, //End Success
+                    */
+                    error: function () {
+                        alert("ERROR");
+                    }
+                }); //End AJAX
+}
+
+</script>

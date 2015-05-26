@@ -20,6 +20,11 @@ class CitiesController < ApplicationController
     @districts = @city.districts
     @estates = Estate.where(city_id: @city.id).order("timeperiod DESC")
 
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @projects}
+    end
+
   end
 
   def new
