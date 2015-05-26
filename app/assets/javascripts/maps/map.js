@@ -1,3 +1,10 @@
+/*
+
+var markers = ['start'];
+var point;
+var map;
+var marker;
+
 function loadJScript() {
 	var script = document.createElement("script");
 	script.type = "text/javascript";
@@ -6,20 +13,25 @@ function loadJScript() {
 }
 
 function init() {
-	var map = new BMap.Map("allmap");
-	var point = new BMap.Point(110.404, 39.915);
+	map = new BMap.Map("allmap");
+	point = new BMap.Point(110.404, 39.915);
 	map.centerAndZoom(point,7);                 
-	var marker = new BMap.Marker(point);
+	marker = new BMap.Marker(point);
 	map.addOverlay(marker);	
 	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
-
 }
+
+function addMarker(longitude, lattitude){
+	marker = new BMap.Marker(BMap.Point(longitude, lattitude));
+	map.addOverlay(marker);
+}
+
+
 
 window.onload = loadJScript;
 
 
 
-/*
 //百度地图API功能
 
 

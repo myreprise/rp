@@ -16,6 +16,7 @@ class CitiesController < ApplicationController
   def show
     @city = City.find(params[:id])
     @projects = Project.where(city_id: @city.id).find_each
+    gon.city = @city
     gon.projects = @projects
     @districts = @city.districts
     @estates = Estate.where(city_id: @city.id).order("timeperiod DESC")

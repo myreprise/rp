@@ -1,15 +1,17 @@
-<div class="container">
+<div class="my-fluid-container">
 	<div class="row">
 	  <div class="col-md-8">
-	    <h2><%= @city.name %><p>
-	    <%= link_to 'Edit', edit_city_path(@city) %> |
-		<%= link_to 'Back', cities_path %></p>
+	    <h2><%= @city.name %>
+	    <p>
+	    	<%= link_to 'Edit', edit_city_path(@city) %> |
+			<%= link_to 'Back', cities_path %>
+		</p>
 	</h2>
 	  </div>
 	      <div class="col-md-4">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="search <%= @city.name %> projects">
+            <input type="text" class="form-control" placeholder="search projects" id="search">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -21,7 +23,7 @@
 		</div>
 		<div class="col-md-7">
 			<h3>Retail projects</h3>
-			<table class="table table-hover">
+			<table class="table table-hover" id="project_list">
 				<thead>
 					<tr>
 						<th>Project</th>
@@ -31,24 +33,19 @@
 				</thead>
 				<tbody>
 					<% @projects.each do |project| %>
-					<tr>
-						<td><%= link_to project.name, project %></td>
+					<tr class="entry">
+						<td><%= link_to project.name, project, class: "searchable" %></td>
 						<td><%= link_to project.developer.name, project.developer %></td>
 						<td><%= link_to project.district.name, city_district_path(@city, project.district) %></td>
-
-
-
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
-
-
 		</div>
 	</div> <!-- end row div -->
 	<div class="row">
 		<div class="col-md-12">
-			<div id="allmap"></div>
+			<%= render 'map' %>
 		</div>
 	</div> <!-- End of row -->
 	<div class="row">
@@ -107,34 +104,3 @@
 	</div> <!-- End of row -->
 
 </div> <!-- End of container -->
-
-
-<script type="text/javascript">
-
-
-
-function addMarker(lat, long) {
-    _lat = lat;
-    _long = long;
-    $.ajax({
-                    url: '/cities.json',
-                    dataType: "json",
-                    success: function(data){
-                    	console.log(data)
-                    },
-
-/*
-                    function (data) {
-                        new BMap.Marker({
-                            map: map,
-                            position: new google.maps.LatLng(_lat, _long),
-                        }); //End Marker
-                    }, //End Success
-                    */
-                    error: function () {
-                        alert("ERROR");
-                    }
-                }); //End AJAX
-}
-
-</script>

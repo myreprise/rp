@@ -3,6 +3,12 @@ class ProjectsController < ApplicationController
 
 	def index
 		@projects = Project.all
+
+    	respond_to do |format|
+    	  format.html
+    	  format.json  { render :json => @projects}
+    	end
+
 	end
 
 	def show
@@ -10,6 +16,8 @@ class ProjectsController < ApplicationController
 		gon.project = @project
 		@other_projects = Project.where(district_id: @project.district_id).find_each
 		@developer_projects = Project.where(developer_id: @project.developer_id).find_each
+
+
 	end
 
 	def new

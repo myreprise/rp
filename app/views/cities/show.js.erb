@@ -1,0 +1,27 @@
+
+
+    $.ajax({
+                    url: '/cities',
+                    dataType: "json",
+                    success: function(data){
+                    	$.each(data, function(key, value){
+                    		if(value.city_id == <%= @city.id %>){
+								console.log(value.longitude, value.lattitude);	
+                    		}
+//							addMarker(value.longitude, value.lattitude);
+                    	});
+                    },
+                    error: function () {
+                        alert("ERROR");
+                    }
+                }); //End AJAX
+
+
+    $("#search").keyup(function() {
+        var value = this.value.toLowerCase().trim();
+        $("#project_list").find(".entry").each(function(index) {
+            var id = $(this).find(".searchable").text().toLowerCase().trim();
+            $(this).toggle(id.indexOf(value) !== -1);
+        });
+
+    });
