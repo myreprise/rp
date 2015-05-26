@@ -9,9 +9,12 @@ class DistrictsController < ApplicationController
 	end
 
 	def show
-		city = City.find(params[:city_id])
-		@district = city.districts.find(params[:id])
+		@city = City.find(params[:city_id])
+		@district = @city.districts.find(params[:id])
     	@projects = Project.where(district_id: @district.id).find_each
+		gon.projects = @projects
+		gon.city = @city
+		gon.district = @district
 	end
 
 	def new

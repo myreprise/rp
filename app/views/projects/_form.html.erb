@@ -22,11 +22,11 @@
   </div>
   <div class="field">
     <%= f.label :district %>
-    <%= f.collection_select(:district_id, District.where(city_id: @project.city_id), :id, :name, prompt: true) %>
+    <%= f.collection_select(:district_id, District.where(city_id: :city_id), :id, :name, prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :developer_id %>
-    <%= f.collection_select(:developer_id, Developer.all, :id, :name, prompt: true) %>
+    <%= f.collection_select(:developer_id, Developer.all, :id, :name, :include_blank => "Nothing selected", prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :turnover %>

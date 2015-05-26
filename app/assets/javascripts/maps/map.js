@@ -1,3 +1,10 @@
+ ready = function() {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = "http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808&callback=init";
+    document.body.appendChild(script);
+ };
+
 /*
 
 var markers = ['start'];

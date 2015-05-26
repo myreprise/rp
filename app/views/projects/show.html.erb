@@ -1,4 +1,4 @@
-<div class="container">
+<div class="my-fluid-container">
 	<div class="row">
 		<div class="col-md-5">
 			<%= image_tag(@project.image.url(:large), :class => "img-thumbnail") %>			
@@ -40,7 +40,7 @@
 					<% if @project.city.name == "Xi'an" || @project.city.name == "Zhengzhou" %>
 					<tr>
 						<td>Distance from CityON (km)</td>
-						<td><script>(distance([108.95216, 34.345946], [<%= @project.longitude %>,<%= @project.lattitude %>]))</script> km</td>
+						<td>XX km</td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -49,7 +49,7 @@
 	</div> <!-- End of row -->
 	<div class="row">
 		<div class="col-md-12">
-			<div id="allmap"></div>
+			<%= render 'map' %>
 		</div>
 	</div>
 
@@ -99,8 +99,8 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808"></script>
+<script>
 
-<script type="text/javascript">
-	createMap(<%= @project.longitude %>, <%= @project.lattitude %>, 13, gon.project);
+	window.onload = ready;
+
 </script>
