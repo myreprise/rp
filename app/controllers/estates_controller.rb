@@ -2,7 +2,7 @@ class EstatesController < ApplicationController
 
 	def index
 		@city = City.find(params[:city_id])
-		@estate = @city.estates
+		@estates = @city.estates.order('timeperiod DESC')
 	end
 
 	def new
@@ -21,8 +21,8 @@ class EstatesController < ApplicationController
 	end
 
 	def show
-		city = City.find(params[:city_id])
-		@estate = city.estates.find(params[:id])
+		@city = City.find(params[:city_id])
+		@estate = @city.estates.find(params[:id])
 	end
 
 	def edit
@@ -33,7 +33,6 @@ class EstatesController < ApplicationController
 	def update
 		@city = City.find(params[:city_id])
 		@estate = @city.estates.find(params[:id])
-
 		if @estate.update_attributes(estate_params)
 			redirect_to(:action => 'show', :id => @estate.id)
 		else
@@ -44,7 +43,7 @@ class EstatesController < ApplicationController
 private
 
 	def estate_params
-		params.require(:estate).permit(:timeperiod, :new_constructed_residential, :secondary_residential, :re_investment_residential, :re_investment_commercial)
+		params.require(:estate).permit(:timeperiod, :new_constructed_residential, :secondary_residential, :re_investment_residential, :re_investment_commercial, :floor_space_started_residential, :floor_space_started_commercial, :floor_space_under_construction_residential, :floor_space_under_construction_commercial, :floor_space_completed_residential, :floor_space_completed_commercial, :floor_space_sold_residential, :floor_space_sold_commercial, :building_sold_residential, :building_sold_commercial)
 	end
 
 end

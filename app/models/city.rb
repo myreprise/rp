@@ -7,10 +7,21 @@ class City < ActiveRecord::Base
 	has_many :projects
 	has_many :developers
 	has_many :districts, :dependent => :destroy
-	has_many :estates
+	has_many :estates, :dependent => :destroy
+
+	accepts_nested_attributes_for :estates, reject_if: proc { |attributes| attributes['timeperiod'].blank? },
+											allow_destroy: true
+
+
+	accepts_nested_attributes_for :districts, 
+								  reject_if: proc { |attributes| attributes['name'].blank? },
+								  allow_destroy: true
 
 	validates_presence_of :name
 	validates :name, length: { minimum: 2 }
 	
+	def to_s
+		name
+	end
 
 end

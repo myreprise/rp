@@ -72,6 +72,7 @@
 					</table>
 
 				<h3>Most recent real estate data</h3>
+				<%= link_to 'Add entry', new_city_estate_path(@city) %> | <%= link_to	'Show', city_estates_path(@city) %>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -85,7 +86,7 @@
 						<tbody>
 							<% @estates.each do |estate| %>
 							<tr>
-								<td><%= estate.timeperiod.strftime("%Y %B") %></td>
+								<td><%= estate.timeperiod.strftime("%B") %></td>
 								<td><%= estate.new_constructed_residential %></td>
 								<td><%= estate.secondary_residential %></td>
 								<td><%= estate.re_investment_residential %></td>

@@ -1,4 +1,4 @@
-<%= form_for([@city, @districts]) do |f| %>
+<%= form_for([@city, @district]) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -12,6 +12,6 @@
     <%= f.text_field :grade %>
   </div>
   <div class="actions">
-    <%= f.submit 'Add' %>
+    <%= f.submit 'Submit' %>
   </div>
 <% end %>
