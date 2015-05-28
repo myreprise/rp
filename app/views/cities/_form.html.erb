@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="col-md-4">
+  <div class="col-md-8">
     <h4><%= @city.name %> key data</h4>
     <div class="field">
       <%= f.label :name %>
@@ -41,9 +41,7 @@
     <div class="form-group">
       <%= f.label :image %>
       <%= f.file_field :image, html: { class: 'form-control'} %>
-    </div>
-  </div>
-  <div class="col-md-4">
+    </div>  
     <h4>Districts</h4>
     <%= f.fields_for :districts do |district| %>
     <div>
@@ -55,28 +53,8 @@
     </div>
     <% end %>
 
-  </div>
-  <div class="col-md-4">
-    
-    <h4>Real estate data</h4>
-    <p>Real estate investment - residential</p>
-      <%= f.fields_for :estates do |estate| %>
-
-      <div>
-        <div class='field'>
-          <%= estate.label :timeperiod, estate.timeperiod %>
-          <%= estate.text_field :re_investment_residential %>
-          <%= estate.check_box :_destroy %>
-          <%= estate.label :_destroy, 'x' %> 
-        </div>
-      </div>
-      <% end %>
-
-
     <div class="actions">
       <%= f.submit "Submit", class: "btn btn-primary" %>
     </div>
-
-  </div>
-
+</div>
 <% end %>

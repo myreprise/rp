@@ -19,7 +19,6 @@ class CitiesController < ApplicationController
     gon.city = @city
     gon.projects = @projects
     @districts = @city.districts
-    @estates = Estate.where(city_id: @city.id).order("timeperiod DESC")
 
     respond_to do |format|
       format.html
@@ -31,13 +30,11 @@ class CitiesController < ApplicationController
   def new
     @city = City.new
     @districts = @city.districts.build
-    @estates = @city.estates.build
   end
 
   def edit
     @city = City.find(params[:id])
     @districts = @city.districts
-    @estates = @city.estates
   end
 
   def create
@@ -79,6 +76,6 @@ class CitiesController < ApplicationController
 
     def city_params
       params.require(:city).permit(:name, :tier, :area, :rank, :longitude, :lattitude, :image, 
-        districts_attributes: [:id, :name, :_destroy], estates_attributes: [:_destroy, :id, :timeperiod, :_destroy, :building_sold_residential, :building_sold_commercial, :new_constructed_residential, :secondary_residential, :re_investment_residential, :re_investment_commercial, :floor_space_started_residential, :floor_space_started_commercial, :floor_space_under_construction_residential, :floor_space_under_construction_commercial, :floor_space_completed_residential, :floor_space_under_construction_commercial, :floor_space_completed_residential, :floor_space_completed_commercial, :floor_space_sold_residential, :floor_space_sold_commercial  ])
+        districts_attributes: [:id, :name, :_destroy])
     end
 end
