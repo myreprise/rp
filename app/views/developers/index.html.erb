@@ -1,22 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
 
-<h1>Listing Developers</h1>
 <%= link_to 'New Developer', new_developer_path %>
 
 <table class="table table-hover">
   <thead>
     <tr>
             <th>Developer</th>
-            <th>admin</th>    
+            <th>Country</th>
+            <th>Projects</th>
+            <th>Total GFA</th>
+            <th>admin</th>
     </tr>
   </thead>
 
   <tbody>
     <% @developers.each do |developer| %>
       <tr>
-        <td><%= link_to developer.name, developer %></td>
+        <td><%= image_tag(developer.image.url(:small)) %>   <%= link_to developer.name, developer %></td>
+        <td><%= developer.country %></td>
+        <td><%= Project.where(:developer_id => developer.id).size %></td>
+        <td><%= number_with_delimiter(Project.where( :developer_id => developer.id ).sum :gfa)  %></td>
         <td><%= link_to 'Edit', edit_developer_path(developer) %> | <%= link_to 'Destroy', developer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -24,8 +29,5 @@
 </table>
 
     </div> <!-- end col-md -->
-    
-    <div class="col-md-6">
-    </div> <!-- end col-md -->
-  </div>
+  </div> <!-- end of row -->
 </div> <!-- end container -->

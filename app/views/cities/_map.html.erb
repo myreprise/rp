@@ -8,6 +8,9 @@ function init(){
 	var point = new BMap.Point(gon.city.longitude, gon.city.lattitude)
 	map.centerAndZoom(point, 13);
 	map.addControl(new BMap.MapTypeControl());
+	map.addControl(new BMap.NavigationControl());
+	map.enableContinuousZoom();
+
 
 	var opts = {
 	    width: 80,

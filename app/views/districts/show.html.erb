@@ -1,27 +1,35 @@
 <div class="my-fluid-container">
- <h2><%= @district.name %></h2>
-	<p>According to the R&amp;P DB, there is a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m of competitive retail space in this district</p>
 	<div class="row">
-		<div class="col-md-6">
-			<table>
-				<thead>
 
+		<div class="col-md-2">
+			<h1><%= @district.name %></h1>
+			<p><%= number_with_delimiter(@projects_total_gfa) %> sq m of competitive retail space in this district</p>
+		</div>
+		<div class="col-md-10">
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Project</th>
+						<th>Developer</th>
+						<th>GFA</th>
+						<th>Tenants</th>
+					</tr>
 				</thead>
 				<tbody>
-					<%= @projects.each do |project| %>
+					<% @projects.each do |project| %>
 					<tr>
-						<td>
-							<%= link_to image_tag(project.image.url(:large), :class => "img-thumbnail"), project %>
-						</td>
+						<td><%= link_to image_tag(project.image.url(:small), :class => "img-thumbnail"), project %>  <%= link_to project.name, project %></td>
+						<td><%= link_to project.developer.name, project.developer %></td>
+						<td><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
+						<td><%= project.tenants %></td>
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
-		</div>
-		<div class="col-md-6">
 
 		</div>
-	</div><!-- end of class row -->
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<%= render 'map' %>

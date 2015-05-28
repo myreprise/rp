@@ -22,7 +22,7 @@
   </div>
   <div class="field">
     <%= f.label :district %>
-    <%= f.collection_select(:district_id, District.where(city_id: :city_id), :id, :name, prompt: true) %>
+    <%= f.collection_select(:district_id, District.all, :id, :name, prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :developer_id %>
@@ -39,6 +39,10 @@
   <div class="field">
     <%= f.label :gfa %>
     <%= f.text_field :gfa, class: 'form-control'  %>
+  </div>
+  <div class="field">
+    <%= f.label :opening_year %>
+    <%= f.text_field :opening_year, class: 'form-control'  %>
   </div>
   <div class="field">
     <%= f.label :parking %>

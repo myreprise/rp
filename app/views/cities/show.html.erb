@@ -1,9 +1,9 @@
 <div class="my-fluid-container">
 	<div class="row">
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<%= image_tag(@city.image.url(:large), :class => "img-thumbnail") %>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-8">
 			<p>According to the R&amp;P database, <%= @city.name %> has a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m of retail space</p>
 			<div>
 				<h3>Retail projects</h3>
@@ -14,6 +14,7 @@
 						<th>Project</th>
 						<th>Developer</th>
 						<th>District</th>
+						<th>GFA</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -22,6 +23,7 @@
 						<td><%= link_to project.name, project, class: "searchable" %></td>
 						<td><%= link_to project.developer.name, project.developer %></td>
 						<td><%= link_to project.district.name, city_district_path(@city, project.district) %></td>
+						<td><%= number_with_delimiter(project.gfa) %></td>
 					</tr>
 					<% end %>
 				</tbody>

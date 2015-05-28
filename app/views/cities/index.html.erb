@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-
-      <p id="notice"><%= notice %></p>
-
-      <h1>Listing Cities</h1>
+    <div class="col-md-12">
       <%= link_to 'New City', new_city_path %>
       <table class="table table-hover">
         <thead>
           <tr>
+            <th>Rank</th>
             <th>City</th>
+            <th>Project count</th>
+            <th>Total GFA</th>
             <th>admin</th>
           </tr>
         </thead>
@@ -17,7 +16,10 @@
         <tbody>
           <% @cities.each do |city| %>
             <tr>
-              <td><%= link_to city.name, city %></td>
+              <td><%= city.rank %></td>
+              <td><%= image_tag(city.image.url(:small), :class => "img-thumbnail") %>  <%= link_to city.name, city %></td>
+              <td><%= Project.where(:city_id => city.id).size %></td>
+              <td><%= number_with_delimiter(Project.where( :city_id => city.id ).sum :gfa) %></td>
               <td><%= link_to 'Edit', edit_city_path(city) %> | <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
@@ -25,6 +27,5 @@
       </table>
 
     </div> <!-- end col-md -->
-    <div class="col-md-6"></div>
-  </div>
+  </div> <!-- end of row -->
 </div> <!-- end container -->

@@ -15,6 +15,10 @@ function init(){
 		map.centerAndZoom(point, 12);
 	}
 	map.addControl(new BMap.MapTypeControl());
+	map.addControl(new BMap.NavigationControl());
+	map.enableContinuousZoom();
+
+
 
 	var opts = {
 	    width: 80,

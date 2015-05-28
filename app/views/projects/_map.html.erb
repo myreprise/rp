@@ -8,7 +8,16 @@ function init(){
 	var marker;
 	var point = new BMap.Point(gon.project.longitude, gon.project.lattitude);
 	map.centerAndZoom(point, 16);
+	map.addControl(new BMap.NavigationControl());
 	map.addControl(new BMap.MapTypeControl());
+	map.enableContinuousZoom();
+
+
+	function showInfo(e){
+		console.log(e.point.lng + ", " + e.point.lat);
+	}
+	map.addEventListener("click", showInfo);
+
 
 	var opts = {
 	    width: 80,
