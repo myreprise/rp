@@ -19,7 +19,7 @@ class CitiesController < ApplicationController
     gon.city = @city
     gon.projects = @projects
     @districts = @city.districts
-
+    @projects_total_gfa = Project.where( :city_id => @city.id ).sum :gfa
     respond_to do |format|
       format.html
       format.json  { render :json => @projects}

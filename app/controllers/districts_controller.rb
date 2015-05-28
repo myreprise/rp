@@ -12,6 +12,7 @@ class DistrictsController < ApplicationController
 		@city = City.find(params[:city_id])
 		@district = @city.districts.find(params[:id])
     	@projects = Project.where(district_id: @district.id).find_each
+		@projects_total_gfa = Project.where( :district_id => @district.id ).sum :gfa
 		gon.projects = @projects
 		gon.city = @city
 		gon.district = @district

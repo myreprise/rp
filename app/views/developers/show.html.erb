@@ -1,8 +1,11 @@
 <div class="my-fluid-container">
- <h2><%= image_tag(@developer.image.url(:large)) %></h2>
 	<div class="row">
+		<div class="col-md-4">
+			<%= image_tag(@developer.image.url(:large)) %>
+		</div>
 		<div class="col-md-8">
 			<h3>Projects by developer <%= @developer.name %></h3>
+			<p>According to the R&amp;P database, <%= @developer.name %> has a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m of retail space in Mainland China</p>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -24,7 +27,7 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div><!-- end of row -->
 	<div class="row">
 		<div class="col-md-12">
 			<%= render 'map' %>

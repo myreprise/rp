@@ -16,6 +16,7 @@ gem 'gon'
 gem 'paper_trail'
 gem 'wheelhouse'
 gem 'paperclip'
+gem 'will_paginate'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,26 +1,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
-			<h1>Listing articles</h1>
-			<table class="table table-hover">
-				<thead>
-					<th>Article</th>
-					<th>Publication</th>
-					<th>Date</th>
-				</thead>
-				<tbody>			
-					<% @articles.each do |article| %>
-					<tr>
-						<td><%= link_to article.title, article %></td>
-						<td><%= article.publication %></td>
-						<td><%= article.publication_date %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
+			<%= render 'articles' %>
+			<%= will_paginate @articles %>
 		</div>
 		<div class="col-md-3">
-			<h1>Search all articles</h1>
-		</div>
-	</div>
-</div>
+			<%= form_tag articles_path, :method => 'get' do %>
+			  <p>
+			    <%= text_field_tag :search, params[:search] %>
+			    <%= submit_tag "Search", :name => nil %>
+			  </p>
+			<% end %>
+		</div> <!-- end of the col-md -->
+	</div> <!-- end of the row -->
+</div> <!-- end of container -->
