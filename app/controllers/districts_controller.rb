@@ -9,9 +9,13 @@ class DistrictsController < ApplicationController
 	end
 
 	def show
-		city = City.find(params[:city_id])
-		@district = city.districts.find(params[:id])
+		@city = City.find(params[:city_id])
+		@district = @city.districts.find(params[:id])
     	@projects = Project.where(district_id: @district.id).find_each
+		@projects_total_gfa = Project.where( :district_id => @district.id ).sum :gfa
+		gon.projects = @projects
+		gon.city = @city
+		gon.district = @district
 	end
 
 	def new
@@ -31,13 +35,13 @@ class DistrictsController < ApplicationController
 
 
 	def edit
-		city = City.find(params[:city_id])
-		@district = city.districts.find(params[:id])
+		@city = City.find(params[:city_id])
+		@district = @city.districts.find(params[:id])
 	end
 
 	def update
-		city = City.find(params[:city_id])
-		@district = city.districts.find(params[:id])
+		@city = City.find(params[:city_id])
+		@districts = @city.districts.find(params[:id])
 
 		if @district.update_attributes(district_params)
 			redirect_to(:action => 'show', :id => @district.id)

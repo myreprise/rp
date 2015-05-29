@@ -1,0 +1,50 @@
+	<div id="allmap"></div>
+
+<script>
+
+function init(){
+
+	var map = new BMap.Map("allmap"); 
+	var marker;
+	var point = new BMap.Point(gon.project.longitude, gon.project.lattitude);
+	map.centerAndZoom(point, 16);
+	map.addControl(new BMap.NavigationControl());
+	map.addControl(new BMap.MapTypeControl());
+	map.enableContinuousZoom();
+
+
+	function showInfo(e){
+		console.log(e.point.lng + ", " + e.point.lat);
+	}
+	map.addEventListener("click", showInfo);
+
+
+	var opts = {
+	    width: 80,
+	    height: 50,
+	    enableMessage:true,
+	    enableCloseOnClick:true,
+	    enableAutoPan:true
+	};
+
+	marker = new BMap.Marker(point);
+	content = "<h4>" + gon.project.name + "</h4>";
+	addClickHandler(content, marker);
+	map.addOverlay(marker);	
+
+	function openInfo(content, e){
+	    var p = e.target;
+	    var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+	    var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+	    map.openInfoWindow(infoWindow, point); //开启信息窗口
+	}
+
+	function addClickHandler(content, marker) {
+		marker.addEventListener("click", function(e){
+		openInfo(content,e)
+		});
+	}
+
+}
+
+</script>

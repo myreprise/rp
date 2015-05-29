@@ -1,37 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
-<h1>Listing Projects</h1>
 <%= link_to 'New Project', new_project_path %>
 
 <table class="table table-hover">
   <thead>
     <tr>
         <th>Project</th>
+        <th>City</th>
+        <th>District</th>
+        <th>GFA</th>
+        <th>Year</th>
         <th>admin</th>
     </tr>
   </thead>
 
   <tbody>
     <% @projects.each do |project| %>
+      
       <tr>
-        <td><%= link_to project.name, project %></td>
+        <td><%= image_tag(project.image.url(:small), :class => "img-thumbnail") %>  <%= link_to project.name, project %></td>
+        <td><%= link_to project.city, project.city %></td>
+        <td><%= link_to project.district, city_district_path(project.city, project.district) %></td>
+        <td><%= number_with_delimiter(project.gfa) %></td>
+        <td><%= project.year %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
-
     </div> <!-- end col-md -->
-    <div class="col-md-4">
-      <h1>Search all projects</h1>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div> <!-- end col md -->
-  </div>
+  </div><!-- end of row -->
 </div> <!-- end container -->
