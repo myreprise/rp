@@ -21,6 +21,7 @@ class DevelopersController < ApplicationController
 	def show
 		@developer = Developer.find(params[:id])
 		@projects = Project.where(developer_id: Developer.find(params[:id])).find_each
+		@projects_total_gfa = Project.where( :developer_id => @developer.id ).sum :gfa
 		gon.projects = @projects
 		@articles = Article.where("title LIKE ?", "%#{@developer.name}%")
 	end

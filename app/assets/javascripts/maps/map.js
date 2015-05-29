@@ -1,11 +1,105 @@
-function createMap(longitude, lattitude, zoom, gon_query){
+ ready = function() {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = "http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808&callback=init";
+    document.body.appendChild(script);
+ };
+
+/*
+
+var markers = ['start'];
+var point;
+var map;
+var marker;
+
+function loadJScript() {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src = "http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808&callback=init";
+	document.body.appendChild(script);
+}
+
+function init() {
+	map = new BMap.Map("allmap");
+	point = new BMap.Point(110.404, 39.915);
+	map.centerAndZoom(point,7);                 
+	marker = new BMap.Marker(point);
+	map.addOverlay(marker);	
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+}
+
+function addMarker(longitude, lattitude){
+	marker = new BMap.Marker(BMap.Point(longitude, lattitude));
+	map.addOverlay(marker);
+}
+
+
+
+window.onload = loadJScript;
+
+
+
+//百度地图API功能
+
+
+$(document).ready(function(){
+
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.enableScrollWheelZoom(true);   
+
+});
+
+
+
+	//百度地图API功能
+	function loadJScript() {
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "http://api.map.baidu.com/api?v=2.0&ak=BF934346e7e1c13620f7d9de908ed808&callback=init";
+		document.body.appendChild(script);
+	}
+	function init() {
+		var map = new BMap.Map("allmap");            // 创建Map实例
+		var point = new BMap.Point(116.404, 39.915); // 创建点坐标
+		map.centerAndZoom(point,15);                 
+		map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+	}  
+
+
+loadJScript();
+
+})
+
+
+
+
+
+function loadJScript() {
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "http://api.map.baidu.com/api?v=2.0&ak=您的密钥&callback=init";
+		document.body.appendChild(script);
+	}
+	function init() {
+		var map = new BMap.Map("allmap");            // 创建Map实例
+		var point = new BMap.Point(116.404, 39.915); // 创建点坐标
+		map.centerAndZoom(point,15);                 
+		map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+	}
+
+
+
+function init(){
 	var map;
 	var arrMarkers = [];
 	var arrInfoWindow = [];
 	var markers;
 
 	map = new BMap.Map("allmap"); 
-	map.centerAndZoom(new BMap.Point(longitude, lattitude), zoom);
+	map.centerAndZoom(new BMap.Point(108.9000, 34.2667), 7);
 	map.addControl(new BMap.MapTypeControl());
 	//map.enableScrollWheelZoom();
 	map.enableContinuousZoom();
@@ -19,8 +113,11 @@ function createMap(longitude, lattitude, zoom, gon_query){
 	    enableCloseOnClick:true,
 	    enableAutoPan:true
 	};
+}
 
+*/
 
+/*
 	if (gon_query.length > 1){
 		$.each(gon_query, function(key, val) {
 				marker = new BMap.Marker(new BMap.Point(val.longitude, val.lattitude));
@@ -33,7 +130,9 @@ function createMap(longitude, lattitude, zoom, gon_query){
 		content = "<h4>" + gon_query.name + "</h4><p class='projectInfo'>" + "EXISTING/FUTURE project (" + gon_query.year + ")" + "</p><p class='projectInfo'>" + gon_query.grade + " " + gon_query.type + "</p><p class='last'></p>";
 		addClickHandler(content, marker);
 		map.addOverlay(marker);	
-	}
+		}
+
+
 
 function openInfo(content, e){
     var p = e.target;
@@ -49,7 +148,6 @@ function addClickHandler(content, marker) {
 }
 
 
-}
 
 
 
@@ -79,4 +177,9 @@ function loadScript() {
   document.body.appendChild(script);
 }
 
-//window.onload = loadScript;
+
+
+	window.onload = loadJScript; 
+
+
+	*/

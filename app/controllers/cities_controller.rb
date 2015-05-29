@@ -16,15 +16,20 @@ class CitiesController < ApplicationController
   def show
     @city = City.find(params[:id])
     @projects = Project.where(city_id: @city.id).find_each
+    gon.city = @city
     gon.projects = @projects
     @districts = @city.districts
-    @estates = Estate.where(city_id: @city.id).order("timeperiod DESC")
+    @projects_total_gfa = Project.where( :city_id => @city.id ).sum :gfa
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @projects}
+    end
 
   end
 
   def new
     @city = City.new
-    @districts = @city.districts
+    @districts = @city.districts.build
   end
 
   def edit
@@ -52,7 +57,6 @@ class CitiesController < ApplicationController
 
 
   def delete
-
     @city = City.find(params[:id])
 
   end
@@ -71,6 +75,7 @@ class CitiesController < ApplicationController
     end
 
     def city_params
-      params.require(:city).permit(:name, :tier, :area, :rank, :longitude, :lattitude, :image)
+      params.require(:city).permit(:name, :tier, :area, :rank, :longitude, :lattitude, :image, 
+        districts_attributes: [:id, :name, :_destroy])
     end
 end

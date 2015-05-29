@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522022341) do
+ActiveRecord::Schema.define(version: 20150528120006) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20150522022341) do
     t.string   "publication"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "cfacts", force: :cascade do |t|
+    t.string   "fact_category"
+    t.string   "fact_title"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -35,7 +42,13 @@ ActiveRecord::Schema.define(version: 20150522022341) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "estate_id"
+  end
+
+  create_table "city_info", id: false, force: :cascade do |t|
+    t.integer "city_id"
+    t.integer "cfacts_id"
+    t.integer "timeline_id"
+    t.float   "value"
   end
 
   create_table "developers", force: :cascade do |t|
@@ -57,27 +70,6 @@ ActiveRecord::Schema.define(version: 20150522022341) do
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "estates", force: :cascade do |t|
-    t.integer  "city_id"
-    t.date     "timeperiod"
-    t.integer  "building_sold_residential"
-    t.integer  "building_sold_commercial"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.float    "new_constructed_residential"
-    t.float    "secondary_residential"
-    t.float    "re_investment_residential"
-    t.float    "re_investment_commercial"
-    t.float    "floor_space_started_residential"
-    t.float    "floor_space_started_commercial"
-    t.float    "floor_space_under_construction_residential"
-    t.float    "floor_space_under_construction_commercial"
-    t.float    "floor_space_completed_residential"
-    t.float    "floor_space_completed_commercial"
-    t.float    "floor_space_sold_residential"
-    t.float    "floor_space_sold_commercial"
   end
 
   create_table "paperclip_images", force: :cascade do |t|
@@ -108,6 +100,13 @@ ActiveRecord::Schema.define(version: 20150522022341) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "opening_year"
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.date     "timeperiod"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

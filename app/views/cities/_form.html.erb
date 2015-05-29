@@ -1,4 +1,5 @@
 <%= form_for @city, html: { multipart: true, role: "form" } do |f| %>
+
   <% if @city.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@city.errors.count, "error") %> prohibited this city from being saved:</h2>
@@ -10,52 +11,50 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :tier %>
-    <%= f.text_field :tier, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :area  %>
-    <%= f.text_field :area, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :rank %>
-    <%= f.text_field :rank, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude, class: 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :lattitude %>
-    <%= f.text_field :lattitude, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, html: { class: 'form-control'} %>
-  </div>
-  <div>
-    <h4><%= @districts.size %> Districts</h4>
-    <table>
-      <thead>
-      </thead>
-      <tbody>
-        <% @districts.each do |district| %>
-        <tr>
-          <td><%= link_to district.name, edit_city_district_path(@city, district) %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <ul>
-    </ul>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  </div>
+
+  <div class="col-md-8">
+    <h4><%= @city.name %> key data</h4>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :tier %>
+      <%= f.text_field :tier, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :area  %>
+      <%= f.text_field :area, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :rank %>
+      <%= f.text_field :rank, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :lattitude %>
+      <%= f.text_field :lattitude, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image, html: { class: 'form-control'} %>
+    </div>  
+    <h4>Districts</h4>
+    <%= f.fields_for :districts do |district| %>
+    <div>
+      <div class="field">
+        <%= district.text_field :name %>
+        <%= district.check_box :_destroy %>
+        <%= district.label :_destroy, 'x' %>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+</div>
 <% end %>
