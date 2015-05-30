@@ -18,11 +18,11 @@
   <tbody>
     <% @developers.each do |developer| %>
       <tr>
-        <td><%= image_tag(developer.image.url(:small)) %>   <%= link_to developer.name, developer %></td>
-        <td><%= developer.country %></td>
-        <td><%= Project.where(:developer_id => developer.id).size %></td>
-        <td><%= number_with_delimiter(Project.where( :developer_id => developer.id ).sum :gfa)  %></td>
-        <td><%= link_to 'Edit', edit_developer_path(developer) %> | <%= link_to 'Destroy', developer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="vertical-align:middle;"><%= image_tag(developer.image.url(:small)) %>   <%= link_to developer.name, developer %></td>
+        <td style="vertical-align:middle;"><%= developer.country %></td>
+        <td style="vertical-align:middle;"><%= Project.where(:developer_id => developer.id).size %></td>
+        <td style="vertical-align:middle;"><%= number_with_delimiter(Project.where( :developer_id => developer.id ).sum :gfa)  %></td>
+        <td style="vertical-align:middle;"><%= link_to 'Edit', edit_developer_path(developer) %> | <%= link_to 'Destroy', developer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

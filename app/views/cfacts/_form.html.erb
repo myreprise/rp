@@ -1,0 +1,33 @@
+<%= form_for [@city, @city_fact], html: { multipart: true, role: "form" } do |f| %>
+  <% if @city_fact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@city_fact.errors.count, "error") %> prohibited this developer from being saved:</h2>
+
+      <ul>
+      <% @city_fact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :city_id %>
+    <%= f.collection_select(:city_id, City.all, :id, :name, prompt: true) %>
+  </div>
+  <div class="field">
+    <%= f.label "Period" %>
+    <%= f.collection_select(:timeline_id, Timeline.all, :id, :timeperiod, prompt: true) %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.collection_select(:category_id, Category.all, :id, :title, prompt: true) %>
+  </div>
+  <div class="field">
+    <%= f.label :value %>
+    <%= f.text_field :value, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

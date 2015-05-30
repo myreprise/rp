@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528120006) do
+ActiveRecord::Schema.define(version: 20150529102044) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -22,11 +22,20 @@ ActiveRecord::Schema.define(version: 20150528120006) do
     t.datetime "updated_at",       null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "general_type"
+  end
+
   create_table "cfacts", force: :cascade do |t|
-    t.string   "fact_category"
-    t.string   "fact_title"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "city_id"
+    t.integer  "timeline_id"
+    t.float    "value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -44,13 +53,6 @@ ActiveRecord::Schema.define(version: 20150528120006) do
     t.datetime "image_updated_at"
   end
 
-  create_table "city_info", id: false, force: :cascade do |t|
-    t.integer "city_id"
-    t.integer "cfacts_id"
-    t.integer "timeline_id"
-    t.float   "value"
-  end
-
   create_table "developers", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
@@ -66,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150528120006) do
   create_table "districts", force: :cascade do |t|
     t.integer  "city_id"
     t.string   "name"
-    t.integer  "population"
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

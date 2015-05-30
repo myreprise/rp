@@ -9,7 +9,7 @@ function init(){
 	var point;
 	if(gon.projects.length > 0){
 		point = new BMap.Point(gon.projects[0].longitude, gon.projects[0].lattitude);		
-		map.centerAndZoom(point, 15);
+		map.centerAndZoom(point, 14);
 	} else {
 		point = new BMap.Point(gon.city.longitude, gon.city.lattitude);		
 		map.centerAndZoom(point, 12);
@@ -28,19 +28,12 @@ function init(){
 	    enableAutoPan:true
 	};
 
-	if (gon.projects.length > 0){
 		$.each(gon.projects, function(key, val) {
 				marker = new BMap.Marker(new BMap.Point(val.longitude, val.lattitude));
 				content = "<h4>" + val.name + "</h4>";
 				addClickHandler(content, marker);
 				map.addOverlay(marker);	
 		}); //end of .each()
-	} else {
-		marker = new BMap.Marker(new BMap.Point(gon.projects.longitude, gon.projects.lattitude));
-		content = "<h4>" + gon.projects.name + "</h4>";
-		addClickHandler(content, marker);
-		map.addOverlay(marker);	
-	}
 
 	function openInfo(content, e){
 	    var p = e.target;

@@ -10,6 +10,7 @@
         <th>Project</th>
         <th>City</th>
         <th>District</th>
+        <th>Developer</th>
         <th>GFA</th>
         <th>Year</th>
         <th>admin</th>
@@ -20,12 +21,13 @@
     <% @projects.each do |project| %>
       
       <tr>
-        <td><%= image_tag(project.image.url(:small), :class => "img-thumbnail") %>  <%= link_to project.name, project %></td>
-        <td><%= link_to project.city, project.city %></td>
-        <td><%= link_to project.district, city_district_path(project.city, project.district) %></td>
-        <td><%= number_with_delimiter(project.gfa) %></td>
-        <td><%= project.year %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="vertical-align:middle;"><%= image_tag(project.image.url(:small), :class => "img-thumbnail") %>  <%= link_to project.name, project %></td>
+        <td style="vertical-align:middle;"><%= link_to project.city, project.city %></td>
+        <td style="vertical-align:middle;"><%= link_to project.district, city_district_path(project.city, project.district) %></td>
+        <td style="vertical-align:middle;"><%= link_to project.developer.name, project.developer %></td>
+        <td style="vertical-align:middle;"><%= number_with_delimiter(project.gfa) %></td>
+        <td style="vertical-align:middle;"><%= project.opening_year %></td>
+        <td style="vertical-align:middle;"><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 
     <% end %>

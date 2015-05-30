@@ -20,19 +20,12 @@ function init(){
 	    enableAutoPan:true
 	};
 
-	if (gon.projects.length > 1){
 		$.each(gon.projects, function(key, val) {
 				marker = new BMap.Marker(new BMap.Point(val.longitude, val.lattitude));
-				content = "<p>" + val.image_filename + "</p>"+ "<h4>" + val.name + "</h4>";
+				content = "<h4>" + val.name + "</h4>";
 				addClickHandler(content, marker);
 				map.addOverlay(marker);	
 		}); //end of .each()
-	} else {
-		marker = new BMap.Marker(new BMap.Point(gon.projects.longitude, gon.projects.lattitude));
-		content = "<h4>" + gon.projects.name + "</h4>";
-		addClickHandler(content, marker);
-		map.addOverlay(marker);	
-	}
 
 	function openInfo(content, e){
 	    var p = e.target;

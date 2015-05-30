@@ -46,10 +46,15 @@
 						<td>Tenants</td>
 						<td><%= @project.tenants %></td>
 					</tr>
-					<% if @project.city.name == "Xi'an" || @project.city.name == "Zhengzhou" %>
+					<% if @project.city.name == "Xi'an" %>
 					<tr>
-						<td>Distance from CityON (km)</td>
-						<td>XX km</td>
+						<td>Distance from CityON</td>
+						<td><%= @distance_xian %> km</td>
+					</tr>
+					<% elsif @project.city.name == "Zhengzhou" %>
+					<tr>
+						<td>Distance from CityON</td>
+						<td><%= @distance_zhengzhou %> km</td>
 					</tr>
 					<% end %>
 				</tbody>

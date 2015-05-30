@@ -10,4 +10,8 @@ class Project < ActiveRecord::Base
 	validates_presence_of :lattitude, :longitude
 
 
+	def to_s
+		name
+	end
+
 end

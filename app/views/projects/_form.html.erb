@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :city_id %>
-    <%= f.collection_select(:city_id, City.all, :id, :name, prompt: true) %>
+    <%= f.collection_select(:city_id, City.all, :id, :timeperiod, prompt: true) %>
   </div>
   <div class="field">
     <%= f.label :district %>

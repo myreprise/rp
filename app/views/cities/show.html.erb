@@ -12,18 +12,20 @@
 				<thead>
 					<tr>
 						<th>Project</th>
-						<th>Developer</th>
 						<th>District</th>
+						<th>Developer</th>
 						<th>GFA</th>
+						<th>Year</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @projects.each do |project| %>
 					<tr class="entry">
 						<td><%= link_to project.name, project, class: "searchable" %></td>
-						<td><%= link_to project.developer.name, project.developer %></td>
 						<td><%= link_to project.district.name, city_district_path(@city, project.district) %></td>
+						<td><%= link_to project.developer.name, project.developer %></td>
 						<td><%= number_with_delimiter(project.gfa) %></td>
+						<td><%= project.opening_year %></td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -39,25 +41,6 @@
 		<div class="col-md-12">
 				<h3>Retail districts</h3>
 							<p><%= link_to pluralize(@city.districts.size, 'districts'), city_districts_path(@city) %></p>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>District</th>
-								<th>Population</th>
-								<th>Grade</th>
-							</tr>
-						</thead>
-						<tbody>
-							<% @districts.each do |district| %>
-							<tr>
-								<td><%= link_to district.name, [district.city, district] %></td>
-								<td><%= district.population %></td>
-								<td><%= district.grade %></td>
-							</tr>
-							<% end %>
-						</tbody>
-					</table>
-
 				<h3>Most recent real estate data</h3>
 
 					<table class="table table-hover">

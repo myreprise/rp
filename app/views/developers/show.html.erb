@@ -11,8 +11,9 @@
 					<tr>
 						<th>Project</th>
 						<th>City</th>
+						<th>District</th>
 						<th>GFA</th>
-						<th>Tenants</th>
+						<th>Opening</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,8 +21,9 @@
 					<tr>
 						<td><%= link_to project.name, project %></td>
 						<td><%= link_to project.city.name, project.city %></td>
+						<td><%= link_to project.district.name, city_district_path(project.city, project.district)%></td>
 						<td><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
-						<td><%= project.tenants %></td>
+						<td><%= project.opening_year %></td>
 					</tr>
 					<% end %>
 				</tbody>

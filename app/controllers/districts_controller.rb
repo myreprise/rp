@@ -2,8 +2,8 @@ class DistrictsController < ApplicationController
 	before_action :load_city
 
 	def index
-		city = City.find(params[:city_id])
-		@districts = city.districts
+		@city = City.find(params[:city_id])
+		@districts = @city.districts
 	    @projects = Project.where(city_id: @city.id).find_each
 	    gon.projects = @projects
 	end
@@ -64,6 +64,6 @@ private
 	end
 
 	def district_params
-		params.require(:district).permit(:name, :city_id, :population, :grade)
+		params.require(:district).permit(:name, :city_id, :grade)
 	end
 end

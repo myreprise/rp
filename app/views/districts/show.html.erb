@@ -1,11 +1,12 @@
 <div class="my-fluid-container">
 	<div class="row">
 
-		<div class="col-md-2">
+		<div class="col-md-3">
+			<h1><%=link_to @district.city.name, @district.city %>>></h1>
 			<h1><%= @district.name %></h1>
 			<p><%= number_with_delimiter(@projects_total_gfa) %> sq m of competitive retail space in this district</p>
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-9">
 
 			<table class="table table-hover">
 				<thead>
@@ -13,16 +14,16 @@
 						<th>Project</th>
 						<th>Developer</th>
 						<th>GFA</th>
-						<th>Tenants</th>
+						<th>Opening</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @projects.each do |project| %>
 					<tr>
-						<td><%= link_to image_tag(project.image.url(:small), :class => "img-thumbnail"), project %>  <%= link_to project.name, project %></td>
-						<td><%= link_to project.developer.name, project.developer %></td>
-						<td><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
-						<td><%= project.tenants %></td>
+						<td style="vertical-align:middle;"><%= link_to image_tag(project.image.url(:small), :class => "img-thumbnail"), project %>  <%= link_to project.name, project %></td>
+						<td style="vertical-align:middle;"><%= link_to project.developer.name, project.developer %></td>
+						<td style="vertical-align:middle;"><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
+						<td style="vertical-align:middle;"><%= project.opening_year %></td>
 					</tr>
 					<% end %>
 				</tbody>

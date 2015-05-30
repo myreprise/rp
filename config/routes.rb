@@ -3,6 +3,7 @@
   resources :paperclip_images
   resources :cities do
     resources :districts
+    resources :cfacts
   end
   
   resources :projects
