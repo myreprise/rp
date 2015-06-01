@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+<%= link_to 'New Tenant', new_tenant_path %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+            <th>Tenant</th>
+            <th>Country</th>
+            <th>Industry</th>
+            <th>admin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tenants.each do |tenant| %>
+      <tr>
+        <td style="vertical-align: middle;"><%= link_to tenant.name, tenant %></td>
+        <td style="vertical-align:middle;"><%= tenant.country %></td>
+        <td style="vertical-align:middle;"><%= tenant.industry %></td>
+        <td style="vertical-align:middle;"><%= link_to 'Edit', edit_developer_path(tenant) %> | <%= link_to 'Destroy', tenant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div> <!-- end col-md -->
+  </div> <!-- end of row -->
+</div> <!-- end container -->

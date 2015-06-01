@@ -17,7 +17,7 @@
           <% @cities.each do |city| %>
             <tr>
               <td style="vertical-align:middle;"><%= city.rank %></td>
-              <td><%= image_tag(city.image.url(:small), :class => "img-thumbnail") %>  <%= link_to city.name, city %></td>
+              <td style="vertical-align:middle;"><%= image_tag(city.image.url(:small), :class => "img-thumbnail") %>  <%= link_to city.name, city %></td>
               <td style="vertical-align:middle;"><%= Project.where(:city_id => city.id).size %></td>
               <td style="vertical-align:middle;"><%= number_with_delimiter(Project.where( :city_id => city.id ).sum :gfa) %></td>
               <td style="vertical-align:middle;"><%= link_to 'Edit', edit_city_path(city) %> | <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,13 +1,49 @@
 <div class="my-fluid-container">
 	<div class="row">
+		<div class="col-md-12">
+			<h2><%= @city.name %></h2>
+		</div>
+	</div><!-- end of class row -->
+	<div class="row">
 		<div class="col-md-4">
 			<%= image_tag(@city.image.url(:large), :class => "img-thumbnail") %>
 		</div>
 		<div class="col-md-8">
-			<p>According to the R&amp;P database, <%= @city.name %> has a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m of retail space</p>
-			<div>
-				<h3>Retail projects</h3>
-			</div>
+				<h4>Retail districts</h4>
+				<p><%= link_to "explore", city_districts_path(@city) %></p>
+				<p>According to the R&amp;P database, <%= @city.name %> has a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m of retail space</p>
+				<table class="table table-hover">
+					<thead>
+						<th>Retail district</th>
+						<th>Project count</th>
+						<th>Total GFA</th>
+					</thead>
+					<tbody>
+						<% @districts.each do |district| %>
+						<tr>
+							<td>
+								<%= link_to district.name, city_district_path(@city, district) %>
+							</td>
+							<td>
+
+							</td>
+							<td>
+
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+		</div>
+	</div> <!-- end row div -->
+	<div class="row">
+		<div class="col-md-12">
+			<%= render 'map' %>
+		</div>
+	</div> <!-- End of row -->
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Retail projects</h3>
 			<table class="table table-hover" id="project_list">
 				<thead>
 					<tr>
@@ -21,26 +57,19 @@
 				<tbody>
 					<% @projects.each do |project| %>
 					<tr class="entry">
-						<td><%= link_to project.name, project, class: "searchable" %></td>
-						<td><%= link_to project.district.name, city_district_path(@city, project.district) %></td>
-						<td><%= link_to project.developer.name, project.developer %></td>
-						<td><%= number_with_delimiter(project.gfa) %></td>
-						<td><%= project.opening_year %></td>
+		              <td style="vertical-align:middle;"><%= image_tag(project.image.url(:small), :class => "img-thumbnail") %>  <%= link_to project.name, project %></td>
+						<td style="vertical-align:middle;"><%= link_to project.district.name, city_district_path(@city, project.district) %></td>
+						<td style="vertical-align:middle;"><%= link_to project.developer.name, project.developer %></td>
+						<td style="vertical-align:middle;"><%= number_with_delimiter(project.gfa) %></td>
+						<td style="vertical-align:middle;"><%= project.opening_year %></td>
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
 		</div>
-	</div> <!-- end row div -->
+	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<%= render 'map' %>
-		</div>
-	</div> <!-- End of row -->
-	<div class="row">
-		<div class="col-md-12">
-				<h3>Retail districts</h3>
-							<p><%= link_to pluralize(@city.districts.size, 'districts'), city_districts_path(@city) %></p>
 				<h3>Most recent real estate data</h3>
 
 					<table class="table table-hover">

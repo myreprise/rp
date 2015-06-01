@@ -39,6 +39,21 @@ class DevelopersController < ApplicationController
 		end
 	end
 
+
+	def delete
+		@developer = Developer.find(params[:id])
+	end
+
+
+	def destroy
+	    @developer.destroy
+	    respond_to do |format|
+	      format.html { redirect_to developers_url, notice: 'Developer was successfully destroyed.' }
+	      format.json { head :no_content }
+	    end
+	end
+
+
 private
     def developer_params
       params.require(:developer).permit(:name, :country, :listed, :image)

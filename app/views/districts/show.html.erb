@@ -1,12 +1,18 @@
 <div class="my-fluid-container">
-	<div class="row">
-
-		<div class="col-md-3">
-			<h1><%=link_to @district.city.name, @district.city %>>></h1>
-			<h1><%= @district.name %></h1>
+	<div class= "row">
+		<div class="col-md-12">
+			<h2><%=link_to @district.city.name, @district.city %>>><%= @district.name %></h2>
 			<p><%= number_with_delimiter(@projects_total_gfa) %> sq m of competitive retail space in this district</p>
 		</div>
-		<div class="col-md-9">
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<%= render 'map' %>
+		</div> 
+	</div><!-- end of class row -->
+
+	<div class="row">
+		<div class="col-md-12">
 
 			<table class="table table-hover">
 				<thead>
@@ -30,12 +36,7 @@
 			</table>
 
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<%= render 'map' %>
-		</div> 
-	</div><!--end of class row -->
+	</div><!-- end of class row -->
 </div>
 
 <script>

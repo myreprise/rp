@@ -8,6 +8,7 @@
   
   resources :projects
   resources :developers
+  resources :tenants
   
   resources :articles
 

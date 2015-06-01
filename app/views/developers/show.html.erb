@@ -4,40 +4,7 @@
 			<%= image_tag(@developer.image.url(:large)) %>
 		</div>
 		<div class="col-md-8">
-			<p>According to the R&amp;P database, <%= @developer.name %> has a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m across <%= Project.where(:developer_id => @developer.id).size %> retail projects in Mainland China</p>
-			<h3>Projects by developer <%= @developer.name %></h3>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Project</th>
-						<th>City</th>
-						<th>District</th>
-						<th>GFA</th>
-						<th>Opening</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @projects.each do |project| %>
-					<tr>
-						<td><%= link_to project.name, project %></td>
-						<td><%= link_to project.city.name, project.city %></td>
-						<td><%= link_to project.district.name, city_district_path(project.city, project.district)%></td>
-						<td><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
-						<td><%= project.opening_year %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div><!-- end of row -->
-	<div class="row">
-		<div class="col-md-12">
-			<%= render 'map' %>
-		</div>
-	</div> <!-- End of row-->
-	<div class="row">
-		<div class="col-md-12">
-			<h1>Company financials</h1>
+			<h3>Company financials</h3>
 			<table>
 				<tbody>
 					<tr>
@@ -58,8 +25,41 @@
 					</tr>
 				</tbody>
 			</table>
+			<p>According to the R&amp;P database, <%= @developer.name %> has a total of <%= number_with_delimiter(@projects_total_gfa) %> sq m across <%= Project.where(:developer_id => @developer.id).size %> retail projects in Mainland China</p>
 		</div>
-	</div>
+	</div><!-- end of class row -->
+	<div class="row">
+		<div class="col-md-12">
+			<%= render 'map' %>
+		</div>
+	</div> <!-- End of row-->
+	<div class="row">
+		<div class="col-md-12">
+			<h3>Projects by developer <%= @developer.name %></h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Project</th>
+						<th>City</th>
+						<th>District</th>
+						<th>GFA</th>
+						<th>Opening</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @projects.each do |project| %>
+					<tr>
+				        <td style="vertical-align:middle;"><%= image_tag(project.image.url(:small), :class => "img-thumbnail") %>  <%= link_to project.name, project %></td>
+						<td style="vertical-align:middle;"><%= link_to project.city.name, project.city %></td>
+						<td style="vertical-align:middle;"><%= link_to project.district.name, city_district_path(project.city, project.district)%></td>
+						<td style="vertical-align:middle;"><%= number_with_delimiter(project.gfa, :delimiter => ',') %></td>
+						<td style="vertical-align:middle;"><%= project.opening_year %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div><!-- end of row -->
 	<div class="row">
 		<div class="col-md-10">
 			<h3><%= @developer.name %> news headlines</h3>

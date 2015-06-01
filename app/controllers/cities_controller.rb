@@ -70,8 +70,6 @@ class CitiesController < ApplicationController
   end
 
   private
-
-
   
     def set_city
       @city = City.find(params[:id])
